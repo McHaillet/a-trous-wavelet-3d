@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a-trous-wavelet-3d"
+description = "3D wavelet decomposition in python"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "BSD 3-Clause License"}
+authors = [
+    {name = "Marten Chaillet"},
+    {email="martenchaillet@gmail.com"},
+]
+dependencies = [
+    "numpy",
+    "scipy",
+]
+dynamic = ["version"]
