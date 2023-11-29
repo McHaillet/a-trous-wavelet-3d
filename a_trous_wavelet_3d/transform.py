@@ -34,7 +34,7 @@ def convolve_3d(data, kernel):
     return result
 
 
-def decompose(data, scales):
+def decompose(data, scales, n_sigma=3):
     image = data
     wavelets = np.empty((scales + 1, ) + data.shape, dtype=data.dtype)
     for k in range(1, scales + 1):
@@ -43,7 +43,7 @@ def decompose(data, scales):
             get_kernel(k)
         )
         wavelet = image - new_image
-        wavelets[k - 1] = np.where(wavelet > 3 * wavelet.std(), wavelet, 0)
+        wavelets[k - 1] = np.where(wavelet > n_sigma * wavelet.std(), wavelet, 0)
         image = new_image
     wavelets[-1] = image  # if any part is left store it at the last position
     return wavelets
